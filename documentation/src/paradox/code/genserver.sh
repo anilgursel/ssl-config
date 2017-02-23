@@ -12,7 +12,7 @@ keytool -genkeypair -v \
   -storepass:env PW \
   -keyalg RSA \
   -keysize 2048 \
-  -validity 385
+  -validity 9999
 
 # Create a certificate signing request for example.com
 keytool -certreq -v \
@@ -35,7 +35,8 @@ keytool -gencert -v \
   -ext KeyUsage:critical="digitalSignature,keyEncipherment" \
   -ext EKU="serverAuth" \
   -ext SAN="DNS:example.com" \
-  -rfc
+  -rfc \
+  -validity 9999
 
 # Tell example.com.jks it can trust exampleca as a signer.
 keytool -import -v \
